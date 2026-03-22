@@ -1,0 +1,11 @@
+[project]
+name = "keelim-proxy"
+version = "0.1.0"
+description = "LiteLLM bridge helpers for Claude Code + OpenAI"
+requires-python = ">=3.11"
+dependencies = [
+  "litellm[proxy]",
+]
+
+[tool.uv]
+package = false

@@ -1,0 +1,23 @@
+# Non-secret example LiteLLM proxy config for using Claude Code with
+# Gemini-backed models through LiteLLM's Anthropic-compatible /v1/messages API.
+#
+# Secrets stay in user-level environment variables:
+#   GEMINI_API_KEY      -> LiteLLM uses this upstream when calling Gemini.
+#   LITELLM_MASTER_KEY  -> Claude Code sends this to LiteLLM as gateway auth.
+#
+# Keep Claude Code auth in user scope (for example ~/.claude/settings.json), not
+# in this repository.
+
+model_list:
+  - model_name: gemini-2.5-flash
+    litellm_params:
+      model: gemini/gemini-2.5-flash
+      api_key: os.environ/GEMINI_API_KEY
+
+  - model_name: gemini-2.5-pro
+    litellm_params:
+      model: gemini/gemini-2.5-pro
+      api_key: os.environ/GEMINI_API_KEY
+
+general_settings:
+  master_key: os.environ/LITELLM_MASTER_KEY
